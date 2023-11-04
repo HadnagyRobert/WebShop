@@ -1,0 +1,165 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.title {
+    color: rgb(20, 219, 20);
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-right: 15px;
+}
+
+.search {
+    height: 45px;
+    outline: none;
+    border: 2px solid;
+    background-color: transparent;
+    border-radius: 20px 0px 0px 20px;
+    border-right: none;
+}
+
+.btn1 {
+    height: 45px;
+    outline: none;
+    border: 2px solid;
+    background-color: transparent;
+    border-radius: 0px 20px 20px 0px;
+    transition: all 0.4s;
+}
+
+.btn1:hover {
+    background-color: aliceblue;
+}
+
+.bi-basket {
+    font-size: 30px;
+    color: black;
+    cursor: pointer;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.navbar-toggler {
+    font-size: 20px;
+    color: black;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.product h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.product p:nth-child(1) {
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 100px;
+}
+
+.product p:nth-child(2) {
+    font-size: 18px;
+    color: grey;
+}
+
+.line {
+    height: 6px;
+    width: 30%;
+    background: rgb(20, 219, 20);
+    display: inline-block;
+}
+
+.product .card {
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    margin: 15px;
+}
+
+.head1 {
+    text-align: center;
+    font-weight: 400;
+    margin: 0;
+}
+
+.per1 {
+    text-align: center;
+    color: rgb(172, 172, 172);
+}
+
+.btnc {
+    height: 50px;
+    width: 50%;
+    outline: none;
+    border: none;
+    color: white;
+    background: rgb(20, 219, 20);
+    border-radius: 50px;
+    margin: 0 auto;
+    display: block;
+    transition: all 0.4s;
+}
+
+.btnc:hover {
+    outline: none;
+    border: 1px solid rgb(20, 219, 20);
+    color: rgb(20, 219, 20);
+    background: transparent;
+    border-radius: 50px;
+}
+
+.wrapper {
+    border-top: 03px solid rgb(20, 219, 20);
+    border-bottom: 03px solid rgb(20, 219, 20);
+}
+
+.wrapper a {
+    text-decoration: none;
+    color: rgb(20, 219, 20);
+}
+
+.card-img-top {
+    object-fit: cover;
+}
+
+.card {
+    transition: -webkit-transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.01, 1.01);
+}
+
+@media (min-width: 576px) {
+    .card-img-top {
+        height: 50vw;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-img-top {
+        height: 30vw;
+    }
+}
+
+@media (min-width: 992px) {
+    .card-img-top {
+        height: 20vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-img-top {
+        height: 20vw;
+    }
+}

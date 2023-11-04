@@ -1,0 +1,87 @@
+﻿@page
+@model WebApp.Pages.PastOrdersModel
+@{
+    ViewData["Title"] = "Past Orders";
+}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-4 bg-white m-auto">
+
+            <h2 class="text-center pt-3">Orders</h2>
+
+            <form method="post" class="form-group mx-auto">
+
+                <select asp-for="OrderId" class="form-select">
+                    @foreach (var o in Model.Orders)
+                    {
+                        <option value="@o.Id">@o.ToString()</option>
+                    }
+                </select>
+
+                <div class="d-grid py-3">
+                    <button type="submit" value="submit" class="btnc my-1">See more information</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@if(Model.Order != null)
+{
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Status</h3>
+                <p>@Model.Order.Status</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Date</h3>
+                <p>@Model.Order.Date</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Total</h3>
+                <p>€ @Model.Total</p>
+            </div>
+            <div class="col-md-4">
+                @if(Model.Order.Pickup == null)
+                {
+                    <h3>Address</h3>
+                    <p>@Model.Order.Adress.ToString()</p>
+                }
+                else
+                {
+                    <h3>Pickup From</h3>
+                    <p>@Model.Order.Pickup.ToString()</p>
+                }
+            </div>
+        </div>
+        <div class="row mt-3">
+            @foreach (var p in Model.Order.Basket)
+            {
+                <div class="card rounded-3 mb-4">
+                    <div class="card-body p-4">
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                <img src="data:image/png;base64,@(Convert.ToBase64String(p.Product.Image))" class="img-fluid rounded-3" alt="Cotton T-shirt">
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                <p class="lead fw-normal mb-2">@p.Product.Name</p>
+                                <p><span class="text-muted">Unit: </span>@p.Product.Unit</p>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+
+                                <p class="">Quantity: @p.Quantity</p>
+
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                <h5 class="mb-0">€ @p.Price</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

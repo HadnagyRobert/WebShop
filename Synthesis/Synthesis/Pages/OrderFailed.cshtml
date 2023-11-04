@@ -1,0 +1,13 @@
+﻿@page
+@model WebApp.Pages.OrderFailedModel
+@{
+    ViewData["Title"] = "Something went wrong";
+}
+<div>
+    <h2 class="text-center pt-3">Please select another date or time</h2>
+</div>
+<div>
+    <form method="post" asp-page-handler="">
+        <button type="submit" class="btn btnc btn-block btn-lg">Return To Checkout</button>
+    </form>
+</div>

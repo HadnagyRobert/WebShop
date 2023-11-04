@@ -1,0 +1,44 @@
+﻿@page
+@using LogicLayer.Object;
+@using System.Text.Json;
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<section class="product bg-light">
+
+    <div class="container text-center">
+
+        <div class="row py-5 text-center">
+            <div class="col-lg-6 m-auto">
+                <p class="m-0">Green Agriculture</p>
+                <h1>Our Best Products </h1>
+                <div class="line my-4"></div>
+                <p>
+                    You may not have figured it out yet but here we have the best oranges in the entire market. All of them were taken care of while growing up and they have learned some really good manners
+                </p>
+            </div>
+        </div>
+
+        <div class="row row-cols-3 py-3 m-5">
+            @foreach (Product p in Model.Products)
+            {
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img src="data:image/png;base64,@(Convert.ToBase64String(p.Image))" class="img-fluid pb-3" alt="image">
+                        <h4 class="head1">@p.Name</h4>
+                        <p class="per1">@p.Unit</p>
+                        <h4 class="head1">€ @p.Price</h4>
+                        <form method="post">
+                            <input type="hidden" name="pName" value="@p.Name" />
+                            <button type="submit" value="submit" class="btnc my-4">ADD TO CART</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+
+</section>

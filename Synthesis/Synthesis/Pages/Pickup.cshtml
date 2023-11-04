@@ -1,0 +1,68 @@
+﻿@page
+@model WebApp.Pages.PickupModel
+@{
+}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-4 bg-white m-auto">
+            <h2 class="text-center pt-3">Pickup Location</h2>
+
+            <form method="post" class="py-3">
+
+                <div class="input-group mb-3">
+                    <select asp-for="PickupId" class="form-select">
+                        @foreach (var p in Model.Pickups)
+                        {
+                            if (p.Id > 0)
+                            {
+                                <option value="@p.Id">@p.ToString()</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div>
+                    <h2 class="text-center pt-3">Date</h2>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input asp-for="OrderDate" class="form-control" value="@DateTime.Now" placeholder="Date (dd/mm/yyyy)">
+                    <div class="input-group mb-auto">
+                        <span asp-validation-for="OrderDate"></span>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <select asp-for="Hour" class="form-select" aria-label="Hour">
+                        <option selected value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <select asp-for="Minutes" class="form-select" aria-label="Minutes">
+                        <option selected value="00">00</option>
+                        <option value="30">30</option>
+                    </select>
+                </div>
+
+                <div class="d-grid py-3">
+                    <button type="submit" value="submit" class="btnc my-1">Submit</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

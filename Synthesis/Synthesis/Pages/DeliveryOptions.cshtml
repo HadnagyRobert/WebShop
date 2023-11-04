@@ -1,0 +1,26 @@
+﻿@page
+@model WebApp.Pages.DeliveryOptionsModel
+@{
+    ViewData["Title"] = "Delivery Options";
+}
+
+<div class="container pt-lg-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <a asp-page="/Address">
+                <div class="card">
+                    <img class="card-img-top" src="~/img/home.png" alt="Card image cap">
+                    <span>Home Delivery</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <a asp-page="/Pickup">
+                <div class="card">
+                    <img class="card-img-top" src="~/img/pickup.png" alt="Card image cap">
+                    <span>Pickup from store</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

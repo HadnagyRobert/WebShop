@@ -1,0 +1,776 @@
+<Project>
+  <Name>Synthesis</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Synthesis</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Order</Name>
+        <Access>Public</Access>
+        <Location left="1189" top="55" />
+        <Size width="537" height="434" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int id</Member>
+        <Member type="Field">private User user</Member>
+        <Member type="Field">private List&lt;OrderRecord&gt; basket</Member>
+        <Member type="Field">private Status status</Member>
+        <Member type="Field">private Address? adress</Member>
+        <Member type="Field">private Pickup? pickup</Member>
+        <Member type="Field">private DateTime date</Member>
+        <Member type="Constructor">public Order(User user, Pickup pickup, DateTime date)</Member>
+        <Member type="Constructor">public Order(User user, Address address, DateTime date)</Member>
+        <Member type="Constructor">public Order(int id, User user, List&lt;OrderRecord&gt; basket, Status status, Address address, DateTime date)</Member>
+        <Member type="Constructor">public Order(int id, User user, List&lt;OrderRecord&gt; basket, Status status, Pickup pickup, DateTime date)</Member>
+        <Member type="Constructor">public Order()</Member>
+        <Member type="Method">public void AddItemToBasket(Product product, int quantity)</Member>
+        <Member type="Method">public string ToString()</Member>
+        <Member type="Property">public int Id { get; }</Member>
+        <Member type="Property">publicList&lt;OrderRecord&gt; Basket { get; set; }</Member>
+        <Member type="Property">public Status Status { get; set; }</Member>
+        <Member type="Property">protected DateTime Date { get; set; }</Member>
+        <Member type="Property">public User User { get; set; }</Member>
+        <Member type="Property">public Address Adress { get; set; }</Member>
+        <Member type="Property">public Pickup Pickup { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>User</Name>
+        <Access>Public</Access>
+        <Location left="2890" top="171" />
+        <Size width="624" height="417" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int id</Member>
+        <Member type="Field">private string username</Member>
+        <Member type="Field">private string password</Member>
+        <Member type="Field">private string salt</Member>
+        <Member type="Field">private Address address</Member>
+        <Member type="Field">private string role</Member>
+        <Member type="Field">private string email</Member>
+        <Member type="Field">private string firstName</Member>
+        <Member type="Field">private string lastName</Member>
+        <Member type="Constructor">public User(int id, string username, string password, string salt, string role, string email, string firstName, string lastName)</Member>
+        <Member type="Constructor">public User(string username, string password, string salt, string email, string firstName, string lastName)</Member>
+        <Member type="Property">public int Id { get; set; }</Member>
+        <Member type="Property">public string Username { get; set; }</Member>
+        <Member type="Property">public string Password { get; set; }</Member>
+        <Member type="Property">public string Salt { get; set; }</Member>
+        <Member type="Property">public Address Address { get; set; }</Member>
+        <Member type="Property">public string Role { get; set; }</Member>
+        <Member type="Property">public string Email { get; set; }</Member>
+        <Member type="Property">public string FirstName { get; set; }</Member>
+        <Member type="Property">public string LastName { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Product</Name>
+        <Access>Public</Access>
+        <Location left="23" top="55" />
+        <Size width="631" height="417" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int id</Member>
+        <Member type="Field">private string name</Member>
+        <Member type="Field">private string category</Member>
+        <Member type="Field">private double price</Member>
+        <Member type="Field">private string unit</Member>
+        <Member type="Field">private string description</Member>
+        <Member type="Field">private byte[] image</Member>
+        <Member type="Field">private bool active</Member>
+        <Member type="Constructor">public Product(int id, string name, double price, string unit, string description, byte[] image, Category category, bool active)</Member>
+        <Member type="Constructor">public Product(string name, double price, string unit, string description, byte[] image, Category category, bool active)</Member>
+        <Member type="Constructor">public Product()</Member>
+        <Member type="Method">public string ToString()</Member>
+        <Member type="Property">public int Id { get; }</Member>
+        <Member type="Property">public string Name { get; set; }</Member>
+        <Member type="Property">public string Category { get; set; }</Member>
+        <Member type="Property">public double Price { get; set; }</Member>
+        <Member type="Property">public string Unit { get; set; }</Member>
+        <Member type="Property">public string Description { get; set; }</Member>
+        <Member type="Property">public byte[] Image { get; set; }</Member>
+        <Member type="Property">public bool Active { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UserManager</Name>
+        <Access>Public</Access>
+        <Location left="2984" top="787" />
+        <Size width="533" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">IUserDAL iuser</Member>
+        <Member type="Constructor">public UserManager(IUserDAL iuser)</Member>
+        <Member type="Method">public bool CreateUser(string username, string password, string email, string firstName, string lastName)</Member>
+        <Member type="Method">public bool CheckLogin(string username, string password)</Member>
+        <Member type="Method">public bool CheckLoginAdmin(string username, string password)</Member>
+        <Member type="Method">public bool UpdateUser(User user)</Member>
+        <Member type="Method">public List&lt;User&gt; GetAllUsers()</Member>
+        <Member type="Method">public bool CheckUsername(string username)</Member>
+        <Member type="Method">public User GetUserByUsername(string username)</Member>
+        <Member type="Method">public User GetUserById(int id)</Member>
+        <Member type="Method">private static string PasswordHasher(string password, string salt)</Member>
+        <Member type="Method">private static string GenerateSalt()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ProductManager</Name>
+        <Access>Public</Access>
+        <Location left="47" top="766" />
+        <Size width="597" height="213" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">IProductDAL iproduct</Member>
+        <Member type="Constructor">public ProductManager(IProductDAL iproduct)</Member>
+        <Member type="Method">public bool CreateProduct(string name, double price, string unit, string description, byte[] image, Category category)</Member>
+        <Member type="Method">public bool UpdateProduct(Product product)</Member>
+        <Member type="Method">public List&lt;Product&gt; GetAllProducts()</Member>
+        <Member type="Method">public List&lt;Product&gt; GetAllActiveProducts()</Member>
+        <Member type="Method">public bool CheckProductName(string name)</Member>
+        <Member type="Method">public Product GetProductByName(string name)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UserDAL</Name>
+        <Access>Public</Access>
+        <Location left="3048" top="1435" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IUserDAL</Name>
+        <Access>Public</Access>
+        <Location left="3088" top="1181" />
+        <Size width="254" height="146" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void CreateUser()</Member>
+        <Member type="Method">void UpdateUser()</Member>
+        <Member type="Method">List&lt;User&gt; GetAllUsers()</Member>
+        <Member type="Method">bool CheckUsername(string username)</Member>
+        <Member type="Method">User GetUserByUsername(string username)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>ProductDAL</Name>
+        <Access>Public</Access>
+        <Location left="131" top="1428" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IProductDAL</Name>
+        <Access>Public</Access>
+        <Location left="196" top="1160" />
+        <Size width="241" height="163" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void CreateProduct(Product product)</Member>
+        <Member type="Method">void UpdateProduct(Product product)</Member>
+        <Member type="Method">void DeleteProduct(Product product)</Member>
+        <Member type="Method">List&lt;Product&gt; GetAllProducts()</Member>
+        <Member type="Method">bool CheckProductName(string name)</Member>
+        <Member type="Method">Product GetProductByName(string name)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>OrderManager</Name>
+        <Access>Public</Access>
+        <Location left="1307" top="815" />
+        <Size width="296" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">IOrderDAL iorder</Member>
+        <Member type="Constructor">public OrderManager(IOrderDAL iorder)</Member>
+        <Member type="Method">public bool CreateOrder(Order order)</Member>
+        <Member type="Method">public bool UpdateOrderStatus(int orderId, Status status)</Member>
+        <Member type="Method">public List&lt;Order&gt; GetOrders(int userId)</Member>
+        <Member type="Method">public List&lt;Order&gt; GetAllOrders()</Member>
+        <Member type="Method">public Order GetOrderById(int orderId)</Member>
+        <Member type="Method">public List&lt;OrderRecord&gt; GetProductsOfOrder(int orderId)</Member>
+        <Member type="Method">public bool GetOrderDatesAddress(DateTime orderDate)</Member>
+        <Member type="Method">public bool GetOrderDatesPickup(DateTime orderDate)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IOrderDAL</Name>
+        <Access>Public</Access>
+        <Location left="1294" top="1171" />
+        <Size width="295" height="197" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void CreateOrder(Order order)</Member>
+        <Member type="Method">bool UpdateOrderStatus(int orderId, Status status)</Member>
+        <Member type="Method">List&lt;Order&gt; GetOrders(int UserId)</Member>
+        <Member type="Method">List&lt;Order&gt; GetAllOrders()</Member>
+        <Member type="Method">Order GetOrderById(int orderId)</Member>
+        <Member type="Method">List&lt;OrderRecord&gt; GetProductsOfOrder(int orderId)</Member>
+        <Member type="Method">int GetOrderDatesAddress(DateTime orderDate)</Member>
+        <Member type="Method">int GetOrderDatesPickup(DateTime orderDate)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>OrderDAL</Name>
+        <Access>Public</Access>
+        <Location left="1270" top="1430" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>OrderRecord</Name>
+        <Access>Public</Access>
+        <Location left="771" top="89" />
+        <Size width="318" height="213" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Product product</Member>
+        <Member type="Field">private double price</Member>
+        <Member type="Field">private int quantity</Member>
+        <Member type="Constructor">public OrderRecord(Product product, int quantity)</Member>
+        <Member type="Constructor">public OrderRecord(Product product, double price, int quantity)</Member>
+        <Member type="Property">public Product Product { get; set; }</Member>
+        <Member type="Property">public double Price { get; set; }</Member>
+        <Member type="Property">public int Quantity { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Address</Name>
+        <Access>Public</Access>
+        <Location left="2316" top="383" />
+        <Size width="470" height="332" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int id</Member>
+        <Member type="Field">private string country</Member>
+        <Member type="Field">private string city</Member>
+        <Member type="Field">private string postalCode</Member>
+        <Member type="Field">private string street</Member>
+        <Member type="Field">private int number</Member>
+        <Member type="Constructor">public Address(int id, string country, string city, string postalCode, string street, int number)</Member>
+        <Member type="Constructor">public Address(string country, string city, string postalCode, string street, int number)</Member>
+        <Member type="Method">public string ToString()</Member>
+        <Member type="Property">public int Id { get; }</Member>
+        <Member type="Property">public string Country { get; set; }</Member>
+        <Member type="Property">public string City { get; set; }</Member>
+        <Member type="Property">public string PostalCode { get; set; }</Member>
+        <Member type="Property">public string Street { get; set; }</Member>
+        <Member type="Property">public int Number { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Category</Name>
+        <Access>Public</Access>
+        <Location left="788" top="379" />
+        <Size width="255" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int id</Member>
+        <Member type="Field">private string name</Member>
+        <Member type="Field">private int? parentId</Member>
+        <Member type="Constructor">public Category(int id, string name, int? parentId)</Member>
+        <Member type="Constructor">public Category()</Member>
+        <Member type="Method">public string ToString()</Member>
+        <Member type="Property">public int Id { get; set; }</Member>
+        <Member type="Property">public string Name { get; set; }</Member>
+        <Member type="Property">public int ParentId { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>Status</Name>
+        <Access>Public</Access>
+        <Location left="1852" top="55" />
+        <Size width="162" height="146" />
+        <Collapsed>False</Collapsed>
+        <Value>Placed</Value>
+        <Value>Processing</Value>
+        <Value>Processed</Value>
+        <Value>Delivering</Value>
+        <Value>Delivered</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>MockProductDAL</Name>
+        <Access>Public</Access>
+        <Location left="324" top="1430" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MockOrderDAL</Name>
+        <Access>Public</Access>
+        <Location left="1454" top="1430" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MockUserDAL</Name>
+        <Access>Public</Access>
+        <Location left="3244" top="1435" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Pickup</Name>
+        <Access>Public</Access>
+        <Location left="1766" top="383" />
+        <Size width="462" height="332" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int id</Member>
+        <Member type="Field">private string country</Member>
+        <Member type="Field">private string city</Member>
+        <Member type="Field">private string postalCode</Member>
+        <Member type="Field">private string street</Member>
+        <Member type="Field">private int number</Member>
+        <Member type="Constructor">public Pickup(int id, string country, string city, string postalCode, string street, int number)</Member>
+        <Member type="Constructor">public Pickup()</Member>
+        <Member type="Method">public string ToString()</Member>
+        <Member type="Property">public int Id { get; }</Member>
+        <Member type="Property">public string Country { get; set; }</Member>
+        <Member type="Property">public string City { get; set; }</Member>
+        <Member type="Property">public string PostalCode { get; set; }</Member>
+        <Member type="Property">public string Street { get; set; }</Member>
+        <Member type="Property">public int Number { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CategoryManager</Name>
+        <Access>Public</Access>
+        <Location left="767" top="837" />
+        <Size width="297" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private ICategory icategory</Member>
+        <Member type="Constructor">public CategoryManager(ICategory icategory)</Member>
+        <Member type="Method">public List&lt;Category&gt; GetCategories()</Member>
+        <Member type="Method">public Category GetCategoryByName(string categoryName)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ICategoryDAL</Name>
+        <Access>Public</Access>
+        <Location left="767" top="1184" />
+        <Size width="298" height="95" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">List&lt;Category&gt; GetCategories()</Member>
+        <Member type="Method">Category GetCategoryByName(string categoryName)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>CategoryDAL</Name>
+        <Access>Public</Access>
+        <Location left="737" top="1430" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MockCategoryDAL</Name>
+        <Access>Public</Access>
+        <Location left="925" top="1428" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>PickupManager</Name>
+        <Access>Public</Access>
+        <Location left="1888" top="912" />
+        <Size width="207" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private IPickupDAL ipickup</Member>
+        <Member type="Constructor">public PickupManager(IPickupDAL ipickup)</Member>
+        <Member type="Method">public List&lt;Pickup&gt; GetPickupLocations()</Member>
+        <Member type="Method">public Pickup GetPickupById(int id)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IPickupDAL</Name>
+        <Access>Public</Access>
+        <Location left="1888" top="1194" />
+        <Size width="207" height="95" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">List&lt;Pickup&gt; GetPickupLocations()</Member>
+        <Member type="Method">Pickup GetPickupById(int id)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>PickupDAL</Name>
+        <Access>Public</Access>
+        <Location left="1816" top="1430" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MockPickupDAL</Name>
+        <Access>Public</Access>
+        <Location left="1995" top="1430" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AddressManager</Name>
+        <Access>Public</Access>
+        <Location left="2477" top="867" />
+        <Size width="239" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private IAddressDAL iaddress</Member>
+        <Member type="Constructor">public AddressManager(IAddressDAL iaddress)</Member>
+        <Member type="Method">public Address CreateAddress(Address address)</Member>
+        <Member type="Method">private Address GetAddress(Address address)</Member>
+        <Member type="Method">private bool CheckAddress(Address address)</Member>
+        <Member type="Method">public void NewMethod()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IAddressDAL</Name>
+        <Access>Public</Access>
+        <Location left="2466" top="1199" />
+        <Size width="228" height="112" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void CreateAddress(Address address)</Member>
+        <Member type="Method">bool CheckAddress(Address address)</Member>
+        <Member type="Method">Address GetAddress(Address address)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>AddressDAL</Name>
+        <Access>Public</Access>
+        <Location left="2402" top="1435" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MockAddressDAL</Name>
+        <Access>Public</Access>
+        <Location left="2592" top="1435" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="3" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3290</X>
+          <Y>733</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>309</X>
+          <Y>741</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>309</X>
+          <Y>517</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="5" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3152</X>
+          <Y>1410</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3152</X>
+          <Y>1352</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="3" second="6">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3240</X>
+          <Y>1093</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3240</X>
+          <Y>1156</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="7" second="8">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>243</X>
+          <Y>1396</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>243</X>
+          <Y>1350</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="4" second="8">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>303</X>
+          <Y>1007</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>303</X>
+          <Y>1122</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="9" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1433</X>
+          <Y>523</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="9" second="10">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1423</X>
+          <Y>1087</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1423</X>
+          <Y>1146</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="11" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1346</X>
+          <Y>1403</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1346</X>
+          <Y>1393</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="0" second="12">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1162</X>
+          <Y>157</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="12" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>679</X>
+          <Y>187</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1782</X>
+          <Y>242</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2864</X>
+          <Y>242</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="13">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1795</X>
+          <Y>295</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2377</X>
+          <Y>332</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="15">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1751</X>
+          <Y>137</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1827</X>
+          <Y>137</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="13">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2855</X>
+          <Y>339</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2745</X>
+          <Y>352</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="2" second="14">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>610</X>
+          <Y>550</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="16" second="8">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="17" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1506</X>
+          <Y>1400</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1506</X>
+          <Y>1393</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="18" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3276</X>
+          <Y>1410</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="0" second="19">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1785</X>
+          <Y>327</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1837</X>
+          <Y>340</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="20" second="14">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="22" second="21">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>840</X>
+          <Y>1307</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="23" second="21">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>995</X>
+          <Y>1305</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="20" second="21">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="26" second="25">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="27" second="25">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="24" second="25">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="24" second="19">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="30" second="29">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="31" second="29">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="28" second="29">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="28" second="13">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
